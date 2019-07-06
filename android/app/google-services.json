@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "873867629031",
+    "firebase_url": "https://rnauth-d23ab.firebaseio.com",
+    "project_id": "rnauth-d23ab",
+    "storage_bucket": "rnauth-d23ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873867629031:android:5af5c7f023072a11",
+        "android_client_info": {
+          "package_name": "com.prizilla.empmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873867629031-bojp2j3fpjdnvkt87keb383d5nio71m9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD85C0OmjhdwwDc9Tl4KorVu_8GSa5hcMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873867629031-bojp2j3fpjdnvkt87keb383d5nio71m9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "873867629031-7h2jmneqbaertcr69hctsugjbaf07mt5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.prizilla.rnauth"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873867629031:android:aee6beccf31f2816",
+        "android_client_info": {
+          "package_name": "com.rnauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873867629031-bojp2j3fpjdnvkt87keb383d5nio71m9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD85C0OmjhdwwDc9Tl4KorVu_8GSa5hcMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873867629031-bojp2j3fpjdnvkt87keb383d5nio71m9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "873867629031-7h2jmneqbaertcr69hctsugjbaf07mt5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.prizilla.rnauth"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

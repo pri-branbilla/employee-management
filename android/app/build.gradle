@@ -114,7 +114,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.employeemanagement"
+        applicationId "com.prizilla.empmanager"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -165,7 +165,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(':react-native-firebase')
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.google.firebase:firebase-core:16.0.9'
+    implementation "com.google.android.gms:play-services-base:16.1.0"
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
 
     // JSC from node_modules
     if (useIntlJsc) {
@@ -183,3 +187,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+apply plugin: 'com.google.gms.google-services'
