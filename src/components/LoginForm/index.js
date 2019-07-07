@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import {
   Card, CardSection, Input, Button,
 } from 'generic-app-components'
-import { emailChanged, passwordChanged } from '../../actions'
+import { emailChanged, passwordChanged, loginUser } from '../../actions'
 import styles from './styles'
 
 class LoginForm extends Component {
@@ -16,6 +16,11 @@ class LoginForm extends Component {
 
   onPasswordChange = (text) => {
     this.props.passwordChanged(text)
+  }
+
+  onButtonPress = () => {
+    const { email, password } = this.props
+    this.props.loginUser({ email, password })
   }
 
   render() {
@@ -46,7 +51,7 @@ class LoginForm extends Component {
           </CardSection>
           <CardSection>
             <Button
-              onPress={() => {}}
+              onPress={() => this.onButtonPress()}
               text="Login"
               textStyle={styles.buttonText}
               buttonStyle={styles.buttonStyle}
@@ -61,6 +66,7 @@ class LoginForm extends Component {
 LoginForm.propTypes = {
   emailChanged: PropTypes.func,
   passwordChanged: PropTypes.func,
+  loginUser: PropTypes.func,
   email: PropTypes.string,
   password: PropTypes.string,
 }
@@ -68,6 +74,7 @@ LoginForm.propTypes = {
 LoginForm.defaultProps = {
   emailChanged: () => {},
   passwordChanged: () => {},
+  loginUser: () => {},
   email: '',
   password: '',
 }
@@ -78,5 +85,10 @@ const mapStateToProps = state => ({
 })
 
 export default connect(
-  mapStateToProps, { emailChanged, passwordChanged }
+  mapStateToProps,
+  {
+    emailChanged,
+    passwordChanged,
+    loginUser,
+  }
 )(LoginForm)
