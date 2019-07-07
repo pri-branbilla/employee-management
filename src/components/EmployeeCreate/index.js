@@ -2,12 +2,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Picker, View, Text } from 'react-native'
+import { Picker, Text } from 'react-native'
 import {
-  Card, CardSection, Input, Button, Spinner,
+  Card, CardSection, Input, Button,
 } from 'generic-app-components'
 // eslint-disable-next-line import/named
-import { employeeUpdate } from '../../actions'
+import { employeeUpdate, employeeCreate } from '../../actions'
 import styles from './styles'
 
 class EmployeeCreate extends Component {
@@ -25,6 +25,11 @@ class EmployeeCreate extends Component {
     prop: 'shift',
     value: text,
   })
+
+  onButtonPress = () => {
+    const { name, phone, shift } = this.props
+    return this.props.employeeCreate({ name, phone, shift })
+  }
 
   render() {
     const { name, phone, shift } = this.props
@@ -61,7 +66,7 @@ class EmployeeCreate extends Component {
         </CardSection>
         <CardSection>
           <Button
-            onPress={()=>{}}
+            onPress={this.onButtonPress}
             text="Save"
             textStyle={styles.buttonText}
             buttonStyle={styles.buttonStyle}
@@ -82,6 +87,7 @@ EmployeeCreate.propTypes = {
   phone: PropTypes.string,
   shift: PropTypes.string,
   employeeUpdate: PropTypes.func,
+  employeeCreate: PropTypes.func,
 }
 
 EmployeeCreate.defaultProps = {
@@ -89,6 +95,13 @@ EmployeeCreate.defaultProps = {
   phone: '',
   shift: '',
   employeeUpdate: () => {},
+  employeeCreate: () => {},
 }
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate)
+export default connect(
+  mapStateToProps,
+  {
+    employeeUpdate,
+    employeeCreate,
+  }
+)(EmployeeCreate)
