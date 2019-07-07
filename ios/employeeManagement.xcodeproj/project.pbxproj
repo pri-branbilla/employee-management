@@ -18,9 +18,6 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* employeeManagementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* employeeManagementTests.m */; };
 		8FEBCB17AFD7BCA828F55EF8 /* libPods-employeeManagement-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9930F8CC2FA0AF3CEE24438 /* libPods-employeeManagement-tvOSTests.a */; };
-		AE29D20622D1927200CDFD03 /* libFirebaseAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE29D20522D1927200CDFD03 /* libFirebaseAuth.a */; };
-		AE29D20822D1927600CDFD03 /* libFirebaseCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE29D20722D1927600CDFD03 /* libFirebaseCore.a */; };
-		AE29D20A22D1936C00CDFD03 /* libFirebaseInstanceID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE29D20922D1936C00CDFD03 /* libFirebaseInstanceID.a */; };
 		AE3AE8BA22D056EA003007E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE3AE8B922D056EA003007E5 /* GoogleService-Info.plist */; };
 		D633A2CCC812049E63286435 /* libPods-employeeManagementTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D288DFA42428415C11DA066F /* libPods-employeeManagementTests.a */; };
 		EC1D85D535A7121C2E2AC183 /* libPods-employeeManagement-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9127243097AB663F9188C19 /* libPods-employeeManagement-tvOS.a */; };
@@ -90,9 +87,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE29D20A22D1936C00CDFD03 /* libFirebaseInstanceID.a in Frameworks */,
-				AE29D20822D1927600CDFD03 /* libFirebaseCore.a in Frameworks */,
-				AE29D20622D1927200CDFD03 /* libFirebaseAuth.a in Frameworks */,
 				2CB03AE1792B2FA427CAD4CA /* libPods-employeeManagement.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
