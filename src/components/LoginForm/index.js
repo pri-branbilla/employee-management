@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Card, CardSection, Input, Button,
@@ -21,6 +21,17 @@ class LoginForm extends Component {
   onButtonPress = () => {
     const { email, password } = this.props
     this.props.loginUser({ email, password })
+  }
+
+  renderError = () => {
+    const { error } = this.props
+    return error ? (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>
+          {error}
+        </Text>
+      </View>
+    ) : null
   }
 
   render() {
@@ -49,6 +60,7 @@ class LoginForm extends Component {
               inputStyle={styles.inputStyle}
             />
           </CardSection>
+          {this.renderError()}
           <CardSection>
             <Button
               onPress={() => this.onButtonPress()}
@@ -69,6 +81,7 @@ LoginForm.propTypes = {
   loginUser: PropTypes.func,
   email: PropTypes.string,
   password: PropTypes.string,
+  error: PropTypes.string,
 }
 
 LoginForm.defaultProps = {
@@ -77,11 +90,13 @@ LoginForm.defaultProps = {
   loginUser: () => {},
   email: '',
   password: '',
+  error: '',
 }
 
 const mapStateToProps = state => ({
   email: state.auth.email,
   password: state.auth.password,
+  error: state.auth.error,
 })
 
 export default connect(
