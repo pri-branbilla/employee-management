@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import {
-  Card, CardSection, Input, Button,
+  Card, CardSection, Input, Button, Spinner,
 } from 'generic-app-components'
 import { emailChanged, passwordChanged, loginUser } from '../../actions'
 import styles from './styles'
@@ -32,6 +32,20 @@ class LoginForm extends Component {
         </Text>
       </View>
     ) : null
+  }
+
+  renderButton = () => {
+    const { loading } = this.props
+    return loading ? (
+      <Spinner size="large" />
+    ) : (
+      <Button
+        onPress={this.onButtonPress}
+        text="Login"
+        textStyle={styles.buttonText}
+        buttonStyle={styles.buttonStyle}
+      />
+    )
   }
 
   render() {
@@ -62,12 +76,7 @@ class LoginForm extends Component {
           </CardSection>
           {this.renderError()}
           <CardSection>
-            <Button
-              onPress={() => this.onButtonPress()}
-              text="Login"
-              textStyle={styles.buttonText}
-              buttonStyle={styles.buttonStyle}
-            />
+            {this.renderButton()}
           </CardSection>
         </View>
       </Card>
@@ -82,6 +91,7 @@ LoginForm.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,
   error: PropTypes.string,
+  loading: PropTypes.bool,
 }
 
 LoginForm.defaultProps = {
@@ -91,12 +101,14 @@ LoginForm.defaultProps = {
   email: '',
   password: '',
   error: '',
+  loading: false,
 }
 
 const mapStateToProps = state => ({
   email: state.auth.email,
   password: state.auth.password,
   error: state.auth.error,
+  loading: state.auth.loading,
 })
 
 export default connect(
