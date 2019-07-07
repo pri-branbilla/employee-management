@@ -4,7 +4,7 @@ import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import reducers from './reducers'
-import { LoginForm } from './components'
+import Router from './Router'
 
 class App extends Component {
   componentDidMount = () => {
@@ -24,7 +24,7 @@ class App extends Component {
       createStore(reducers, {}, applyMiddleware(ReduxThunk))
     }
     >
-      <LoginForm />
+      <Router />
     </Provider>
   )
 }
