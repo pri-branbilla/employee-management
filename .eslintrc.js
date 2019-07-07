@@ -10,6 +10,7 @@ module.exports = {
     "import/no-unresolved": 0,
     "import/extensions": 0,
     'react/jsx-filename-extension': 'off',
+    "import/prefer-default-export": 'off',
     "import/no-extraneous-dependencies": [
       "error",
       {
