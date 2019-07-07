@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "generic-app-components": "1.0.2",
+    "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-native": "0.60.0",
     "react-native-firebase": "5.5.4",
