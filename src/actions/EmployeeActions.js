@@ -6,6 +6,7 @@ import {
   EMPLOYEE_CREATE,
   EMPLOYEE_FETCH_SUCCESS,
   EMPLOYEE_SAVE_SUCCESS,
+  EMPLOYEE_DELETE_SUCCESS,
 } from './types'
 
 export const employeeUpdate = ({ prop, value }) => ({
@@ -70,5 +71,21 @@ export const employeeFetch = () => {
           })
         }
       })
+  }
+}
+
+export const employeeDelete = ({ id }) => {
+  const { currentUser } = firebase.auth()
+  return (dispatch) => {
+    firebase.firestore().collection(`users/${currentUser.uid}/employees`)
+      .doc(id).delete()
+      .then(() => {
+        dispatch({
+          type: EMPLOYEE_DELETE_SUCCESS,
+        })
+        console.log('DELETED')
+        Actions.pop()
+      })
+      .catch(error => console.log(error))
   }
 }

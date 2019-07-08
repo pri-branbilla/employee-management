@@ -6,7 +6,7 @@ import Communications from 'react-native-communications'
 import { each } from 'lodash'
 import { connect } from 'react-redux'
 // eslint-disable-next-line import/named
-import { employeeUpdate, employeeSave } from '../../actions'
+import { employeeUpdate, employeeSave, employeeDelete } from '../../actions'
 import { EmployeeForm, ConfirmModal } from '../../components'
 
 class EditEmployee extends Component {
@@ -56,6 +56,8 @@ class EditEmployee extends Component {
     })
   }
 
+  onAccept = () => this.props.employeeDelete({ id: this.props.employee.id })
+
   render() {
     const {
       name,
@@ -82,7 +84,7 @@ class EditEmployee extends Component {
         <ConfirmModal
           modalText="Are you sure you want to delete this?"
           modalVisible={modalVisible}
-          onAccept={() => {}}
+          onAccept={() => this.onAccept()}
           onDecline={() => this.setState({ modalVisible: false })}
         />
       </React.Fragment>
@@ -102,6 +104,7 @@ EditEmployee.propTypes = {
   employee: PropTypes.object,
   employeeUpdate: PropTypes.func,
   employeeSave: PropTypes.func,
+  employeeDelete: PropTypes.func,
 }
 
 EditEmployee.defaultProps = {
@@ -111,6 +114,7 @@ EditEmployee.defaultProps = {
   employee: {},
   employeeUpdate: () => {},
   employeeSave: () => {},
+  employeeDelete: () => {},
 }
 
 export default connect(
@@ -118,5 +122,6 @@ export default connect(
   {
     employeeUpdate,
     employeeSave,
+    employeeDelete,
   }
 )(EditEmployee)
