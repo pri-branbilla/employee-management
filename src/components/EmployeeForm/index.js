@@ -7,7 +7,7 @@ import {
 } from 'generic-app-components'
 import styles from './styles'
 
-const EmployeeCreate = ({
+const EmployeeForm = ({
   name,
   phone,
   shift,
@@ -57,7 +57,7 @@ const EmployeeCreate = ({
   </Card>
 )
 
-EmployeeCreate.propTypes = {
+EmployeeForm.propTypes = {
   name: PropTypes.string,
   phone: PropTypes.string,
   shift: PropTypes.string,
@@ -67,7 +67,7 @@ EmployeeCreate.propTypes = {
   onSubmit: PropTypes.func,
 }
 
-EmployeeCreate.defaultProps = {
+EmployeeForm.defaultProps = {
   name: '',
   phone: '',
   shift: '',
@@ -77,4 +77,4 @@ EmployeeCreate.defaultProps = {
   onSubmit: () => {},
 }
 
-export default EmployeeCreate
+export default EmployeeForm

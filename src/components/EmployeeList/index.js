@@ -2,14 +2,21 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { FlatList } from 'react-native'
+import { Actions } from 'react-native-router-flux'
+import { FlatList, TouchableWithoutFeedback, View } from 'react-native'
 import { Card } from 'generic-app-components'
 // eslint-disable-next-line import/named
 import ListItem from '../ListItem'
 
 class EmployeeList extends Component {
   renderItem = item => (
-    <ListItem text={item.id} />
+    <TouchableWithoutFeedback
+      onPress={() => Actions.employeeEdit({ employee: item.data() })}
+    >
+      <View>
+        <ListItem text={item.id} />
+      </View>
+    </TouchableWithoutFeedback>
   )
 
   render() {
