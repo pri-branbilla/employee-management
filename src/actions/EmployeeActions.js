@@ -5,6 +5,7 @@ import {
   EMPLOYEE_UPDATE,
   EMPLOYEE_CREATE,
   EMPLOYEE_FETCH_SUCCESS,
+  EMPLOYEE_SAVE_SUCCESS,
 } from './types'
 
 export const employeeUpdate = ({ prop, value }) => ({
@@ -40,6 +41,9 @@ export const employeeSave = ({ name, phone, shift, id }) => {
         shift,
       })
       .then(() => {
+        dispatch({
+          type: EMPLOYEE_SAVE_SUCCESS,
+        })
         Actions.pop()
       })
       .catch(error => console.log(error))
