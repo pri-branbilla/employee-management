@@ -11,10 +11,10 @@ import ListItem from '../ListItem'
 class EmployeeList extends Component {
   renderItem = item => (
     <TouchableWithoutFeedback
-      onPress={() => Actions.employeeEdit({ employee: item.data() })}
+      onPress={() => Actions.employeeEdit({ employee: item })}
     >
       <View>
-        <ListItem text={item.id} />
+        <ListItem text={item.data().name} />
       </View>
     </TouchableWithoutFeedback>
   )

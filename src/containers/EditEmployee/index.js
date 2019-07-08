@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 import { each } from 'lodash'
 import { connect } from 'react-redux'
 // eslint-disable-next-line import/named
-import { employeeUpdate } from '../../actions'
+import { employeeUpdate, employeeSave } from '../../actions'
 import { EmployeeForm } from '../../components'
 
 class EditEmployee extends Component {
   componentDidMount = () => {
-    each(this.props.employee, (value, prop) => {
+    each(this.props.employee.data(), (value, prop) => {
       this.props.employeeUpdate({ prop, value })
     })
   }
@@ -32,7 +32,12 @@ class EditEmployee extends Component {
 
   onButtonPress = () => {
     const { name, phone, shift } = this.props
-    console.log(name, phone, shift)
+    this.props.employeeSave({
+      name,
+      phone,
+      shift,
+      id: this.props.employee.id,
+    })
   }
 
   render() {
@@ -66,6 +71,7 @@ EditEmployee.propTypes = {
   shift: PropTypes.string,
   employee: PropTypes.object,
   employeeUpdate: PropTypes.func,
+  employeeSave: PropTypes.func,
 }
 
 EditEmployee.defaultProps = {
@@ -74,11 +80,13 @@ EditEmployee.defaultProps = {
   shift: '',
   employee: {},
   employeeUpdate: () => {},
+  employeeSave: () => {},
 }
 
 export default connect(
   mapStateToProps,
   {
     employeeUpdate,
+    employeeSave,
   }
 )(EditEmployee)

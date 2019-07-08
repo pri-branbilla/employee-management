@@ -16,7 +16,7 @@ export const employeeCreate = ({ name, phone, shift }) => {
   const { currentUser } = firebase.auth()
   return (dispatch) => {
     firebase.firestore().collection(`users/${currentUser.uid}/employees`)
-      .doc(name).set({
+      .add({
         name,
         phone,
         shift,
@@ -29,13 +29,28 @@ export const employeeCreate = ({ name, phone, shift }) => {
   }
 }
 
+export const employeeSave = ({ name, phone, shift, id }) => {
+  const { currentUser } = firebase.auth()
+  return (dispatch) => {
+    firebase.firestore().collection(`users/${currentUser.uid}/employees`)
+      .doc(id)
+      .update({
+        name,
+        phone,
+        shift,
+      })
+      .then(() => {
+        Actions.pop()
+      })
+      .catch(error => console.log(error))
+  }
+}
 
 export const employeeFetch = () => {
   const { currentUser } = firebase.auth()
   return (dispatch) => {
     firebase.firestore().collection(`users/${currentUser.uid}/employees`)
-      .get()
-      .then((docs) => {
+      .onSnapshot((docs) => {
         if (docs.empty) {
           console.log('no doc')
         } else {
@@ -46,6 +61,5 @@ export const employeeFetch = () => {
           })
         }
       })
-      .catch(error => console.log(error))
   }
 }
