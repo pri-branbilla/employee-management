@@ -30,7 +30,12 @@ export const employeeCreate = ({ name, phone, shift }) => {
   }
 }
 
-export const employeeSave = ({ name, phone, shift, id }) => {
+export const employeeSave = ({
+  name,
+  phone,
+  shift,
+  id,
+}) => {
   const { currentUser } = firebase.auth()
   return (dispatch) => {
     firebase.firestore().collection(`users/${currentUser.uid}/employees`)

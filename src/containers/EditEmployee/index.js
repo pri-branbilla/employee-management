@@ -2,13 +2,18 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Communications from 'react-native-communications'
 import { each } from 'lodash'
 import { connect } from 'react-redux'
 // eslint-disable-next-line import/named
 import { employeeUpdate, employeeSave } from '../../actions'
-import { EmployeeForm } from '../../components'
+import { EmployeeForm, ConfirmModal } from '../../components'
 
 class EditEmployee extends Component {
+  state = {
+    modalVisible: false,
+  }
+
   componentDidMount = () => {
     each(this.props.employee.data(), (value, prop) => {
       this.props.employeeUpdate({ prop, value })
@@ -40,22 +45,47 @@ class EditEmployee extends Component {
     })
   }
 
+  onTextButtonPress = () => {
+    const { phone, shift } = this.props
+    Communications.text(phone, `Your upcoming shift is on ${shift}`)
+  }
+
+  onFirePress = () => {
+    this.setState({
+      modalVisible: true,
+    })
+  }
+
   render() {
     const {
       name,
       phone,
       shift,
     } = this.props
+    const {
+      modalVisible,
+    } = this.state
     return (
-      <EmployeeForm
-        name={name}
-        phone={phone}
-        shift={shift}
-        onChangeEmail={this.updateName}
-        onChangePassword={this.updatePhone}
-        onChangeShift={this.updateShift}
-        onSubmit={this.onButtonPress}
-      />
+      <React.Fragment>
+        <EmployeeForm
+          edit
+          name={name}
+          phone={phone}
+          shift={shift}
+          onChangeEmail={this.updateName}
+          onChangePassword={this.updatePhone}
+          onChangeShift={this.updateShift}
+          onSubmit={this.onButtonPress}
+          onText={this.onTextButtonPress}
+          onFire={this.onFirePress}
+        />
+        <ConfirmModal
+          modalText="Are you sure you want to delete this?"
+          modalVisible={modalVisible}
+          onAccept={() => {}}
+          onDecline={() => this.setState({ modalVisible: false })}
+        />
+      </React.Fragment>
     )
   }
 }

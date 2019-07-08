@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Picker, Text } from 'react-native'
 import {
@@ -11,10 +11,13 @@ const EmployeeForm = ({
   name,
   phone,
   shift,
+  edit,
   onChangeEmail,
   onChangePassword,
   onChangeShift,
   onSubmit,
+  onText,
+  onFire,
 }) => (
   <Card containerStyle={styles.container}>
     <CardSection>
@@ -54,6 +57,27 @@ const EmployeeForm = ({
         buttonStyle={styles.buttonStyle}
       />
     </CardSection>
+    { edit ? (
+      <Fragment>
+        <CardSection>
+          <Button
+            onPress={onText}
+            text="Text"
+            textStyle={styles.buttonText}
+            buttonStyle={styles.buttonStyle}
+          />
+        </CardSection>
+        <CardSection>
+          <Button
+            onPress={onFire}
+            text="Fire"
+            textStyle={styles.buttonText}
+            buttonStyle={styles.buttonStyle}
+          />
+        </CardSection>
+      </Fragment>
+    ) : null
+    }
   </Card>
 )
 
@@ -61,20 +85,26 @@ EmployeeForm.propTypes = {
   name: PropTypes.string,
   phone: PropTypes.string,
   shift: PropTypes.string,
+  edit: PropTypes.bool,
   onChangeEmail: PropTypes.func,
   onChangePassword: PropTypes.func,
   onChangeShift: PropTypes.func,
   onSubmit: PropTypes.func,
+  onText: PropTypes.func,
+  onFire: PropTypes.func,
 }
 
 EmployeeForm.defaultProps = {
   name: '',
   phone: '',
   shift: '',
+  edit: false,
   onChangeEmail: () => {},
   onChangePassword: () => {},
   onChangeShift: () => {},
   onSubmit: () => {},
+  onText: () => {},
+  onFire: () => {},
 }
 
 export default EmployeeForm
