@@ -2,27 +2,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
-import { connect } from 'react-redux'
 import {
   Card, CardSection, Input, Button, Spinner,
 } from 'generic-app-components'
-import { emailChanged, passwordChanged, loginUser } from '../../actions'
 import styles from './styles'
 
 class LoginForm extends Component {
-  onEmailChange = (text) => {
-    this.props.emailChanged(text)
-  }
-
-  onPasswordChange = (text) => {
-    this.props.passwordChanged(text)
-  }
-
-  onButtonPress = () => {
-    const { email, password } = this.props
-    this.props.loginUser({ email, password })
-  }
-
   renderError = () => {
     const { error } = this.props
     return error ? (
@@ -35,12 +20,12 @@ class LoginForm extends Component {
   }
 
   renderButton = () => {
-    const { loading } = this.props
+    const { loading, onButtonPress } = this.props
     return loading ? (
       <Spinner size="large" />
     ) : (
       <Button
-        onPress={this.onButtonPress}
+        onPress={onButtonPress}
         text="Login"
         textStyle={styles.buttonText}
         buttonStyle={styles.buttonStyle}
@@ -49,14 +34,19 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { email, password } = this.props
+    const {
+      email,
+      password,
+      onEmailChange,
+      onPasswordChange,
+    } = this.props
     return (
       <Card containerStyle={styles.container}>
         <View style={styles.insideWrapper}>
           <CardSection>
             <Input
               label="Email"
-              onChangeText={this.onEmailChange}
+              onChangeText={onEmailChange}
               value={email}
               placeholder="email@test.com"
               labelStyle={styles.labelStyle}
@@ -68,7 +58,7 @@ class LoginForm extends Component {
               label="Password"
               password
               placeholder="password"
-              onChangeText={this.onPasswordChange}
+              onChangeText={onPasswordChange}
               value={password}
               labelStyle={styles.labelStyle}
               inputStyle={styles.inputStyle}
@@ -85,9 +75,9 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  emailChanged: PropTypes.func,
-  passwordChanged: PropTypes.func,
-  loginUser: PropTypes.func,
+  onEmailChange: PropTypes.func,
+  onPasswordChange: PropTypes.func,
+  onButtonPress: PropTypes.func,
   email: PropTypes.string,
   password: PropTypes.string,
   error: PropTypes.string,
@@ -95,27 +85,13 @@ LoginForm.propTypes = {
 }
 
 LoginForm.defaultProps = {
-  emailChanged: () => {},
-  passwordChanged: () => {},
-  loginUser: () => {},
+  onEmailChange: () => {},
+  onPasswordChange: () => {},
+  onButtonPress: () => {},
   email: '',
   password: '',
   error: '',
   loading: false,
 }
 
-const mapStateToProps = state => ({
-  email: state.auth.email,
-  password: state.auth.password,
-  error: state.auth.error,
-  loading: state.auth.loading,
-})
-
-export default connect(
-  mapStateToProps,
-  {
-    emailChanged,
-    passwordChanged,
-    loginUser,
-  }
-)(LoginForm)
+export default LoginForm
