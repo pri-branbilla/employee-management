@@ -3193,10 +3193,10 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-generic-app-components@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/generic-app-components/-/generic-app-components-1.0.3.tgz#f0a49edea767e968b569c9398e13b556b1f5b449"
-  integrity sha512-ykSRj7ce8LjpmRq9eL4c2uJKJ6ApxAgfYknZp7cG9YesFe521qljH9M/eSAEXLmWZ7kRrX4VjZOPyCTYBR+NSw==
+generic-app-components@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/generic-app-components/-/generic-app-components-1.1.0.tgz#e1c454c92fa61a98cf03c89b8e26731b4e0ffee9"
+  integrity sha512-anB4OKvGi0NKmUIifdO3hHZaN4V8DrzqmtB+x7UG1cxEdWJLHJzhzqxZB2YEoEC0knxvQoubnbBzjm3lt5TOKw==
   dependencies:
     prop-types "15.7.2"
 

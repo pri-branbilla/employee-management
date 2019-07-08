@@ -33,9 +33,7 @@ class NewEmployee extends Component {
       name,
       phone,
       shift,
-      employee,
     } = this.props
-    console.log(employee)
     return (
       <EmployeeForm
         name={name}
@@ -59,7 +57,6 @@ NewEmployee.propTypes = {
   name: PropTypes.string,
   phone: PropTypes.string,
   shift: PropTypes.string,
-  employee: PropTypes.object,
   employeeUpdate: PropTypes.func,
   employeeCreate: PropTypes.func,
 }
@@ -68,7 +65,6 @@ NewEmployee.defaultProps = {
   name: '',
   phone: '',
   shift: '',
-  employee: {},
   employeeUpdate: () => {},
   employeeCreate: () => {},
 }

@@ -5,9 +5,10 @@ import PropTypes from 'prop-types'
 import Communications from 'react-native-communications'
 import { each } from 'lodash'
 import { connect } from 'react-redux'
+import { ConfirmModal } from 'generic-app-components'
 // eslint-disable-next-line import/named
 import { employeeUpdate, employeeSave, employeeDelete } from '../../actions'
-import { EmployeeForm, ConfirmModal } from '../../components'
+import { EmployeeForm } from '../../components'
 
 class EditEmployee extends Component {
   state = {
